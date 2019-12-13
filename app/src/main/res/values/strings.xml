@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MINICO</string>
+    <string name="nav_home">Buy</string>
+    <string name="My_Ads">My Ads</string>
+    <string name="Nav_Sell">Sell</string>
+    <string name="Nav_Profile">Profile</string>
 </resources>

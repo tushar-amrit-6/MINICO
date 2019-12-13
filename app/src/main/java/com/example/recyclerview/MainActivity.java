@@ -1,17 +1,23 @@
 package com.example.recyclerview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     List<service> service1;
-
+    private BottomNavigationView mMainNav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +43,46 @@ public class MainActivity extends AppCompatActivity {
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,service1);
         myrv.setLayoutManager(new GridLayoutManager(this,3));
         myrv.setAdapter(myAdapter);
+        final BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation3);
+        mMainNav = (BottomNavigationView) findViewById(R.id.navigation3);
+        Menu menu = mMainNav.getMenu();
+        MenuItem menuItem1 = menu.getItem(0);
+        menuItem1.setChecked(true);
+        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId())
+                {
+                    case R.id.ic_buy:
 
+
+                        break;
+
+                    case R.id.ic_sell:
+
+                        Intent a = new Intent(getApplicationContext(),Selling.class);
+                        startActivity(a);
+                        break;
+
+                    case R.id.ic_myads:
+
+                        Intent b = new Intent(getApplicationContext(),MyAds.class);
+                        startActivity(b);
+                        break;
+
+                    case R.id.ic_profile:
+
+                        Intent c = new Intent(getApplicationContext(),Profile.class);
+                        startActivity(c);
+                      break;
+
+
+
+                }
+
+                return false;
+            }
+        });
 
 
 
